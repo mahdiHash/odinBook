@@ -27,6 +27,7 @@ app.use(cors());
 
 
 // error handler
+app.use(require('./utils/errLogger'));
 app.use(require('./utils/errHandler'));
 
 module.exports = app;

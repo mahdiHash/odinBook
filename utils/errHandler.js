@@ -9,7 +9,7 @@ const {
 
 const handler = (err, req, res, next) => {
   let resBody = {
-    error: err.message,
+    message: err.message,
     reqBody: req.body,
     reqParams: req.params,
     time: new Date(),
@@ -34,6 +34,10 @@ const handler = (err, req, res, next) => {
     case err instanceof ForbiddenErr:
       res.status(403);
       break;
+    default:
+      resBody.message = 'Something went wrong in the server.';
+      res.status(500);
+
   }
 
   res.json(resBody);

@@ -6,14 +6,6 @@ errors.ServerSideErr = class extends Error {
     this.name = 'ServerSide';
     this.statusCode = 500;
     this.description = desc;
-
-    // make message property enumerable so res.json() can stringify it
-    Object.defineProperty(this, 'message', {
-      value: msg,
-      configurable: false,
-      writable: true,
-      enumerable: true,
-    });
   }
 }
 
@@ -23,14 +15,6 @@ errors.BadRequestErr = class extends Error {
     this.name = 'BadRequest';
     this.statusCode = 400;
     this.description = desc;
-
-    // make message property enumerable so res.json() can stringify it
-    Object.defineProperty(this, 'message', {
-      value: msg,
-      configurable: false,
-      writable: true,
-      enumerable: true,
-    });
   }
 }
 
@@ -40,14 +24,7 @@ errors.ForbiddenErr = class extends Error {
     this.name = 'Forbidden';
     this.statusCode = 403;
     this.description = desc;
-    
-    // make message property enumerable so res.json() can stringify it
-    Object.defineProperty(this, 'message', {
-      value: msg,
-      configurable: false,
-      writable: true,
-      enumerable: true,
-    });
+  
   }
 }
 
@@ -57,14 +34,6 @@ errors.UnauthorizedErr = class extends Error {
     this.name = 'Unauthorized';
     this.statusCode = 401;
     this.description = desc;
-
-    // make message property enumerable so res.json() can stringify it
-    Object.defineProperty(this, 'message', {
-      value: msg,
-      configurable: false,
-      writable: true,
-      enumerable: true,
-    });
   }
 }
 
@@ -74,14 +43,6 @@ errors.NotFoundErr = class extends Error {
     this.name = 'NotFoundErr';
     this.statusCode = 404;
     this.description = desc;
-
-    // make message property enumerable so res.json() can stringify it
-    Object.defineProperty(this, 'message', {
-      value: msg,
-      configurable: false,
-      writable: true,
-      enumerable: true,
-    });
   }
 }
 
@@ -91,14 +52,6 @@ errors.BadGatewayErr = class extends Error {
     this.name = 'BadGatewayErr';
     this.statusCode = 502;
     this.description = desc;
-
-    // make message property enumerable so res.json() can stringify it
-    Object.defineProperty(this, 'message', {
-      value: msg,
-      configurable: false,
-      writable: true,
-      enumerable: true,
-    });
   }
 }
 

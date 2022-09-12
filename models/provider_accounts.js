@@ -6,4 +6,4 @@ const Provider_accounts = new Schema({
   user_id: { type: Schema.Types.ObjectId, required: true },
 });
 
-module.exports = mongoose.model(Provider_accounts);
+module.exports = mongoose.model('Provider_account', Provider_accounts);

@@ -14,3 +14,5 @@ const logger = (err, req, res, next) => {
 
   next(err);
 }
+
+module.exports = logger;

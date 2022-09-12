@@ -8,8 +8,12 @@ const cors = require('cors');
 
 require('dotenv').config();
 
-// mongodb setup
-
+// mongodb connection setup
+const mongoose = require('mongoose');
+mongoose.connect(process.env.MONGODB_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 const app = express();
 

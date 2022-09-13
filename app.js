@@ -49,7 +49,7 @@ app.use(passport.initialize());
 app.use('/accounts', accountsRouter);
 
 // error handler
-app.use(require('./utils/errLogger'));
-app.use(require('./utils/errHandler'));
+app.use(require('./utils/errors/errLogger'));
+app.use(require('./utils/errors/errHandler'));
 
 module.exports = app;

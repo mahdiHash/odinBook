@@ -1,5 +1,5 @@
 const passport = require('../../config/passport-google');
-const errors = require('../../utils/errors');
+const errors = require('../../utils/errors/errors');
 const jwt = require('jsonwebtoken');
 
 require('dotenv').config();

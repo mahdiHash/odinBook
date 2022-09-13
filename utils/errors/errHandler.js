@@ -16,29 +16,27 @@ const handler = (err, req, res, next) => {
     time: new Date(),
   }
 
-  switch (err) {
-    case err instanceof ServerSideErr:
-      res.status(500);
-      break
-    case err instanceof BadGatewayErr:
-      res.status(502);
-      break;
-    case err instanceof BadRequestErr:
-      res.status(400);
-      break;
-    case err instanceof NotFoundErr:
-      res.status(404);
-      break;
-    case err instanceof UnauthorizedErr:
-      res.status(401);
-      break;
-    case err instanceof ForbiddenErr:
-      res.status(403);
-      break;
-    default:
-      resBody.message = 'Something went wrong in the server.';
-      res.status(500);
-
+  if (err instanceof ServerSideErr) {
+    res.status(500);
+  }
+  else if (err instanceof BadGatewayErr) {
+    res.status(502);
+  }
+  else if (err instanceof BadRequestErr) {
+    res.status(400);
+  }
+  else if (err instanceof NotFoundErr) {
+    res.status(404);
+  }
+  else if (err instanceof UnauthorizedErr) {
+    res.status(401);
+  }
+  else if (err instanceof ForbiddenErr) {
+    res.status(403);
+  }
+  else {
+    resBody.message = 'Something went wrong in the server.';
+    res.status(500);
   }
 
   res.json(resBody);

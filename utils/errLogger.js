@@ -18,6 +18,7 @@ const logger = (err, req, res, next) => {
     console.error(err);
     console.log('Request Body: ', req.body);
     console.log('Request Parameters: ', req.params);
+    console.log('Request Query: ', req.query);
   }
 
   next(err);

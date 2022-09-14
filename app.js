@@ -8,6 +8,7 @@ const MongoStore = require('connect-mongo');
 
 // import routers
 const accountsRouter = require('./routes/accounts');
+const postsRouter = require('./routes/posts');
 
 require('dotenv').config();
 
@@ -52,6 +53,7 @@ require('./config/passport-jwt');
 app.use(passport.authenticate('jwt', { session: false }));
 
 // setting app to use routers for routes
+app.use('/posts', postsRouter);
 
 // error handler
 app.use(require('./utils/errors/errLogger'));

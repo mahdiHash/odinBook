@@ -9,7 +9,7 @@ const controller = [
 
   (req, res, next) => {
     let token = jwt.sign(
-      { _id: req.user._id, username: req.user.username },
+      { _id: req.user._id, username: req.user.username, exp: 1000 * 60 * 60 * 24 * 180 },
       process.env.TOKEN_SECRET,
     );
 

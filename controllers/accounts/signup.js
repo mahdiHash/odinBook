@@ -47,7 +47,7 @@ const controller = [
       profile_pic_url: null,
     });
     let token = jwt.sign(
-      { _id: user._id, username: user.username },
+      { _id: user._id, username: user.username, exp: 1000 * 60 * 60 * 24 * 180 },
       process.env.TOKEN_SECRET,
     );
 

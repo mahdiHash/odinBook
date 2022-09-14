@@ -45,8 +45,13 @@ app.use(session({
 
 app.use(passport.initialize());
 
-// setting app to use routers for routes
 app.use('/accounts', accountsRouter);
+
+// set jwt authentication for all routes other than "/accounts/"
+require('./config/passport-jwt');
+app.use(passport.authenticate('jwt', { session: false }));
+
+// setting app to use routers for routes
 
 // error handler
 app.use(require('./utils/errors/errLogger'));

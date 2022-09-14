@@ -1,5 +1,6 @@
 const Post = require('../../models/posts');
 const HashTag = require('../../models/hashtags');
+const User = require('../../models/users');
 const hashtagExtracter = require('../../utils/hashtagExtracter');
 const { body, validationResult } = require('express-validator');
 const { BadRequestErr } = require('../../utils/errors/errors');
@@ -43,6 +44,11 @@ const controller = [
 
       newTag.save();
     }
+
+    // store the post._id in the user's posts field
+    let user = await User.findOne({ username: req.user.username }).catch(next);
+    user.posts.push(post._id);
+    user.save();
 
     post.save();
     res.json(post);

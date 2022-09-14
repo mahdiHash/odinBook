@@ -6,6 +6,7 @@ const User = new Schema({
   username: { type: String, required: true, length: { min: 3 } },
   password: { type: String },
   date_of_birth: { type: Date },
+  posts: [{ type: Schema.Types.ObjectId, ref: 'Post' }],
   friends: [{ type: Schema.Types.ObjectId, ref: 'User' }],
   location: { type: String },
   profile_pic_url: { type: String },

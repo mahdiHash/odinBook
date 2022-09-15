@@ -20,7 +20,9 @@ function extracter(text = '') {
     index++;
   }
 
-  return tags;
+  // convert the array to a Set so the duplicate values are removed
+  // and return an array again
+  return [...new Set(tags)];
 }
 
 function isValid(char = '') {

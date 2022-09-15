@@ -2,7 +2,7 @@ const Post = require('../../models/posts');
 const Hashtag = require('../../models/hashtags');
 const hashtagExtracter = require('../../utils/hashtagExtracter');
 const { body, validationResult } = require('express-validator');
-const { BadRequestErr, ForbiddenErr } = require('../../utils/errors/errors');
+const { BadRequestErr, ForbiddenErr, NotFoundErr } = require('../../utils/errors/errors');
 
 const controller = [
   // check if the author of the post is the same as user
@@ -10,7 +10,7 @@ const controller = [
     let post = await Post.findById(req.query.id).catch(next);
 
     if (!post) {
-      return next(new BadRequestErr('No such post'));
+      return next(new NotFoundErr('No such post'));
     }
 
     if (post.author !== req.user.username) {

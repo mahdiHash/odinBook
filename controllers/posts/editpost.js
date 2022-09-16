@@ -1,6 +1,7 @@
 const Post = require('../../models/posts');
 const Hashtag = require('../../models/hashtags');
 const hashtagExtracter = require('../../utils/hashtagExtracter');
+const escape = require('../../utils/posts/escape');
 const { body, validationResult } = require('express-validator');
 const { BadRequestErr, ForbiddenErr, NotFoundErr } = require('../../utils/errors/errors');
 
@@ -23,7 +24,7 @@ const controller = [
   },
 
   // validation
-  body('content', 'Content can\'t be empty').trim().isLength({ min: 1 }).escape(),
+  body('content', 'Content can\'t be empty').trim().isLength({ min: 1 }),
 
   async (req, res, next) => {
     let error = validationResult(req).array();
@@ -69,7 +70,7 @@ const controller = [
       }
     }
     
-    post.content = req.body.content;
+    post.content = escape(req.body.content);
     post.hashtags = upPostHashtags;
     post.is_edited = true;
     post.save();

@@ -35,11 +35,11 @@ async function callback (issuer, profile, cb) {
       username: profile.id,
       password: null,
       date_of_birth: null,
-      friends: null,
+      friends: [],
       location: null,
       profile_pic_url: null,
-      rooms: null,
-      privates: null,
+      rooms: [],
+      privates: [],
     });
     
     let userProvided = new Provider_accounts({

@@ -70,7 +70,8 @@ const controller = [
     }
     
     post.content = req.body.content;
-    post.hashtags = upPostHashtags;    
+    post.hashtags = upPostHashtags;
+    post.is_edited = true;
     post.save();
     res.json(post);
   }

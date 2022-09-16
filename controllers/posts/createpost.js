@@ -2,12 +2,13 @@ const Post = require('../../models/posts');
 const HashTag = require('../../models/hashtags');
 const User = require('../../models/users');
 const hashtagExtracter = require('../../utils/hashtagExtracter');
+const escape = require('../../utils/posts/escape');
 const { body, validationResult } = require('express-validator');
 const { BadRequestErr } = require('../../utils/errors/errors');
 
 const controller = [
   // input validation
-  body('content', 'Content can\'t be empty').trim().isLength({ min: 1 }).escape(),
+  body('content', 'Content can\'t be empty').trim().isLength({ min: 1 }),
 
   async (req, res, next) => {
     let error = validationResult(req).array();
@@ -20,7 +21,7 @@ const controller = [
     let post = new Post({
       author: req.user.username,
       date: new Date(),
-      content: req.body.content,
+      content: escape(req.body.content),
       is_edited: false,
       comments: [],
       likes: [],

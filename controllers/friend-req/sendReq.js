@@ -15,6 +15,11 @@ const controller = async (req, res, next) => {
     return next(new BadRequestErr());
   }
 
+  // users are already in each other's friends list
+  if (targetUser.friends.includes(req.user._id)) {
+    return next(new BadRequestErr());
+  }
+
   let duplicateReq = await Friend_req.findOne({ 
     to: req.body.to, 
     from: req.user._id,

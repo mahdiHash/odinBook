@@ -19,7 +19,7 @@ const controller = [
 
     let hashtags = hashtagExtracter(req.body.content);
     let post = new Post({
-      author: req.user.username,
+      author: req.user._id,
       date: new Date(),
       content: escape(req.body.content),
       is_edited: false,

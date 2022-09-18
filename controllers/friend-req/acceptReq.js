@@ -23,6 +23,14 @@ const controller = async (req, res, next) => {
 
   request.remove();
 
+  // delete the request from target user to current user, if there's any
+  Friend_req.findOne({ to: request.from, from: request.to}).then((friendReq) => {
+    if (friendReq) {
+      friendReq.remove();
+    }
+    return;
+  }).catch(next);
+
   res.end();
 }
 

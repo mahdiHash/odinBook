@@ -14,7 +14,7 @@ const controller = [
       return next(new NotFoundErr('No such post'));
     }
 
-    if (post.author !== req.user.username) {
+    if (post.author.toString() !== req.user._id.toString()) {
       return next(new ForbiddenErr());
     }
     else {

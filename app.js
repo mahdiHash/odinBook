@@ -11,6 +11,7 @@ const accountsRouter = require('./routes/accounts');
 const postsRouter = require('./routes/posts');
 const usersRouter = require('./routes/users');
 const friendReqRouter = require('./routes/friend-req');
+const commentsRouter = require('./routes/comments');
 
 require('dotenv').config();
 
@@ -58,6 +59,7 @@ app.use(passport.authenticate('jwt', { session: false }));
 app.use('/posts', postsRouter);
 app.use('/users', usersRouter);
 app.use('/friendreq', friendReqRouter);
+app.use('/comments', commentsRouter);
 
 // error handler
 app.use(require('./utils/errors/errLogger'));

@@ -7,14 +7,16 @@ const controller = async (req, res, next) => {
     .select('comments')
     .catch(next);
   let comments = [];
-  
+
   if (!post) {
     return next(new NotFoundErr('No such post'));
   }
 
   // populate every comment of the post
   for (let commentId of post.comments) {
-    let comment = await Comment.findById(commentId).catch(next);
+    let comment = await Comment.findById(commentId)
+      .populate('author', 'username profile_pic_url')
+      .catch(next);
     comments.push(comment);
   }
 

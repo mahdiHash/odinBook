@@ -8,7 +8,6 @@ const Comment = new Schema({
   replies: [{ type: Schema.Types.ObjectId, ref: 'Comment' }],
   in_reply_to: { type: Schema.Types.ObjectId, ref: 'Comment' },
   is_edited: { type: Boolean, default: false },
-  hashtags: [{ type: String }],
 });
 
 module.exports = mongoose.model('Comment', Comment);

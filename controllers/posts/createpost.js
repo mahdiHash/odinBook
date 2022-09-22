@@ -1,7 +1,7 @@
 const Post = require('../../models/posts');
 const HashTag = require('../../models/hashtags');
 const User = require('../../models/users');
-const hashtagExtracter = require('../../utils/hashtagExtracter');
+const hashtagExtractor = require('../../utils/posts/hashtagExtractor');
 const escape = require('../../utils/posts/escape');
 const { body, validationResult } = require('express-validator');
 const { BadRequestErr } = require('../../utils/errors/errors');
@@ -17,7 +17,7 @@ const controller = [
       return next(new BadRequestErr(error[0].msg));
     }
 
-    let hashtags = hashtagExtracter(req.body.content);
+    let hashtags = hashtagExtractor(req.body.content);
     let post = new Post({
       author: req.user._id,
       date: new Date(),

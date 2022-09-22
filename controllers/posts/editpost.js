@@ -1,6 +1,6 @@
 const Post = require('../../models/posts');
 const Hashtag = require('../../models/hashtags');
-const hashtagExtracter = require('../../utils/hashtagExtracter');
+const hashtagExtractor = require('../../utils/posts/hashtagExtractor');
 const escape = require('../../utils/posts/escape');
 const { body, validationResult } = require('express-validator');
 const { BadRequestErr, ForbiddenErr, NotFoundErr } = require('../../utils/errors/errors');
@@ -34,7 +34,7 @@ const controller = [
     }
 
     let post = res.locals.post,
-      upPostHashtags = hashtagExtracter(req.body.content);
+      upPostHashtags = hashtagExtractor(req.body.content);
 
     // remove the post._id from the old hashtags posts field
     // if the new set of hashtags doesn't include any of the old ones,

@@ -5,7 +5,7 @@ const Post = new Schema({
   date: { type: Date, required: true },
   content: { type: String, required: true },
   is_edited: { type: Boolean, default: false },
-  comments: [{ type: Schema.Types.ObjectId, ref: 'User' }],
+  comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }],
   likes: [{ type: Schema.Types.ObjectId, ref: 'User' }],
   hashtags: [{ type: String }],
 });

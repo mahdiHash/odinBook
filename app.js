@@ -12,6 +12,7 @@ const postsRouter = require('./routes/posts');
 const usersRouter = require('./routes/users');
 const friendReqRouter = require('./routes/friend-req');
 const commentsRouter = require('./routes/comments');
+const likeRouter = require('./routes/like');
 
 require('dotenv').config();
 
@@ -60,6 +61,7 @@ app.use('/posts', postsRouter);
 app.use('/users', usersRouter);
 app.use('/friendreq', friendReqRouter);
 app.use('/comments', commentsRouter);
+app.use('/like', likeRouter);
 
 // error handler
 app.use(require('./utils/errors/errLogger'));

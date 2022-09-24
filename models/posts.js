@@ -8,6 +8,7 @@ const Post = new Schema({
   comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }],
   likes: [{ type: Schema.Types.ObjectId, ref: 'User' }],
   hashtags: [{ type: String }],
+  images: [{ type: String }],
 });
 
 module.exports = mongoose.model('Post', Post);

@@ -39,11 +39,8 @@ const controller = [
     Comment.deleteMany({ post: req.query.id }).catch(next);
 
     // delete post
-    Post.deleteOne({ _id: req.query.id })
-      .then(() => {
-        res.end();
-      })
-      .catch(next);
+    res.locals.post.remove();
+    res.end();
   }
 ];
 

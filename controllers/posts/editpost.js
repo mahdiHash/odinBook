@@ -73,6 +73,7 @@ const controller = [
     post.content = escape(req.body.content);
     post.hashtags = upPostHashtags;
     post.is_edited = true;
+    post.images = req.body.images ?? post.images;
     post.save();
     res.json(post);
   }

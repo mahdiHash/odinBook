@@ -26,6 +26,7 @@ const controller = [
       comments: [],
       likes: [],
       hashtags: hashtags,
+      images: req.body.images ?? [],
     });
 
     // store the post._id in the hashtag document in db

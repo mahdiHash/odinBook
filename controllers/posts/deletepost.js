@@ -2,6 +2,7 @@ const Post = require('../../models/posts');
 const Hashtag = require('../../models/hashtags');
 const User = require('../../models/users');
 const Comment = require('../../models/comments');
+const deleteImgFromCloud = require('../../utils/image/delImg');
 const { ForbiddenErr, NotFoundErr } = require('../../utils/errors/errors');
 
 const controller = [
@@ -37,6 +38,11 @@ const controller = [
 
     // delete all the comments of the post
     Comment.deleteMany({ post: req.query.id }).catch(next);
+
+    // delete all the post's images from s3
+    for (let imgName of res.locals.post.images) {
+      await deleteImgFromCloud(imgName).catch(next);
+    }
 
     // delete post
     res.locals.post.remove();

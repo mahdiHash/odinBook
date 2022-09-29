@@ -2,6 +2,7 @@ const uploadImgToCloud = require('../../utils/image/uploadImg');
 const doesImgExist = require('../../utils/image/doesImgExist');
 const storeImageLocally = require('../../config/multer');
 const path = require('path');
+const fsPromise = require('fs/promises');
 const { generateKeySync } = require('crypto');
 const { BadRequestErr } = require('../../utils/errors/errors');
 
@@ -12,11 +13,15 @@ const controller = [
     if (!req.file) {
       return next(new BadRequestErr('No image uploaded'));
     }
-    
+
     // check for image name duplicate in s3 and if there's one,
     // generate new name until it's unique
     while (true) {
-      let doesImgAlreadyExist = await doesImgExist(req.file.filename).catch(next);
+      let doesImgAlreadyExist = await doesImgExist(req.file.filename)
+        .catch((err) => {
+          fsPromise.rm(req.file.path);
+          next(err);
+        });
 
       if (doesImgAlreadyExist) {
         req.file.filename = `${req.user._id}uid` +

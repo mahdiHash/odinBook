@@ -4,12 +4,15 @@ const getFriendsController = require('../controllers/users/getFriends');
 const getPostsController = require('../controllers/users/getPosts');
 const getUserProfileController = require('../controllers/users/getUser');
 const setProfileInfoController = require('../controllers/users/setProfileInfo');
+const setProfilePicController = require('../controllers/users/setProfilePic');
 
 router.put('/setusername', setUsernameController);
 
-router.get('/friends', getFriendsController);
-
 router.post('/setprofileinfo', setProfileInfoController);
+
+router.put('/setprofilepic', setProfilePicController);
+
+router.get('/friends', getFriendsController);
 
 router.get('/:username/posts', getPostsController);
 

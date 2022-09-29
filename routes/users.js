@@ -5,12 +5,15 @@ const getPostsController = require('../controllers/users/getPosts');
 const getUserProfileController = require('../controllers/users/getUser');
 const setProfileInfoController = require('../controllers/users/setProfileInfo');
 const setProfilePicController = require('../controllers/users/setProfilePic');
+const setPassController = require('../controllers/users/setPass');
 
 router.put('/setusername', setUsernameController);
 
 router.post('/setprofileinfo', setProfileInfoController);
 
 router.put('/setprofilepic', setProfilePicController);
+
+router.put('/setpassword', setPassController);
 
 router.get('/friends', getFriendsController);
 

@@ -1,4 +1,5 @@
 const Room = require('../../../models/rooms');
+const escape = require('../../../utils/posts/escape');
 
 const messageRoom = async (socket, message, roomId) => {
   let room = await Room.findById(roomId).select('members messages');

@@ -21,7 +21,7 @@ const controller = [
     }
 
     let user = await User.findById(req.user._id)
-      .select('-password')
+      .select('location date_of_birth first_name last_name')
       .catch(next);
 
     user.location = req.body.location;

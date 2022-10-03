@@ -1,4 +1,5 @@
 const Private = require('../../../models/privates');
+const escape = require('../../../utils/posts/escape');
 
 const messagePrivate = async (socket, message, privateId) => {
   let private = await Private.findById(privateId);
@@ -14,7 +15,7 @@ const messagePrivate = async (socket, message, privateId) => {
   let msgObj = {
     id: socket.user._id + 'uid' + Date.now(),
     time: new Date,
-    content: message,
+    content: escape(message),
     author: socket.user._id,
   }
 

@@ -6,7 +6,7 @@ const startPrivate = async (io, socket, targetUser) => {
   let source = await User.findById(socket.user._id).select('privates');
 
   if (!target) {
-    return socket.emit('UserNotFound', targetUser);
+    return socket.emit('NotFound', targetUser);
   }
 
   let duplicate = await Private.findOne({
@@ -18,7 +18,7 @@ const startPrivate = async (io, socket, targetUser) => {
   ).select('_id');
 
   if (duplicate) {
-    return socket.emit('duplicatePrivate', targetUser);
+    return socket.emit('DuplicatePrivate', targetUser);
   }
 
   let private = new Private({

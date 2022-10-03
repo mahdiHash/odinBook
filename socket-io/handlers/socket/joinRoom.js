@@ -4,7 +4,7 @@ const User = require('../../../models/users');
 const joinRoom = async (io, socket, roomId) => {
   let room = await Room.findById(roomId, {
     messages: { $slice: [-100, 100] },
-  }).select('members');
+  }).select('members creator profile_pic_url name');
 
   if (!room) {
     return socket.emit('NotFound', roomId);

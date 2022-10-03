@@ -36,7 +36,7 @@ const startPrivate = async (io, socket, targetUser) => {
 
   if (io.onlineUsersById[targetUser]) {
     io.to(io.onlineUsersById[targetUser])
-      .emit('privateCreated', private, socket.user._id);
+      .emit('joinedPrivate', private, socket.user._id);
   }
 }
 

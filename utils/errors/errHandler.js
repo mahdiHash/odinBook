@@ -11,7 +11,6 @@ const handler = (err, req, res, next) => {
   let resBody = {
     message: err.message,
     reqBody: req.body,
-    reqParams: req.params,
     reqQuery: req.query,
     time: new Date(),
   }

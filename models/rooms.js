@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 const Room = new Schema({
   members: [{ type: Schema.Types.ObjectId, ref: 'User' }],
   messages: [{ type: Object }],
-  profile_pic_url: { type: String },
+  profile_pic: { type: String },
   name: { type: String },
   creator: { type: Schema.Types.ObjectId, ref: 'User' },
 });

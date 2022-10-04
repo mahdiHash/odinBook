@@ -9,7 +9,7 @@ const User = new Schema({
   posts: [{ type: Schema.Types.ObjectId, ref: 'Post' }],
   friends: [{ type: Schema.Types.ObjectId, ref: 'User' }],
   location: { type: String },
-  profile_pic_url: { type: String },
+  profile_pic: { type: String },
   rooms: [{ type: Schema.Types.ObjectId }],
   privates: [{ type: Schema.Types.ObjectId }],
 });

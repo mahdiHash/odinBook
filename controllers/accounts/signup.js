@@ -44,7 +44,7 @@ const controller = [
       rooms: [],
       date_of_birth: null,
       location: null,
-      profile_pic_url: null,
+      profile_pic: null,
     });
     let token = jwt.sign(
       { _id: user._id, username: user.username, exp: 1000 * 60 * 60 * 24 * 180 },

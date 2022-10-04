@@ -37,7 +37,7 @@ async function callback (issuer, profile, cb) {
       date_of_birth: null,
       friends: [],
       location: null,
-      profile_pic_url: null,
+      profile_pic: null,
       rooms: [],
       privates: [],
     });

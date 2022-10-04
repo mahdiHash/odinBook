@@ -14,7 +14,7 @@ handlers.connection = async (io, socket) => {
       .select('members')
       .populate({
         path: 'members',
-        select: 'username profile_pic_url',
+        select: 'username profile_pic',
       });
 
     socket.join(roomId.toString());
@@ -27,7 +27,7 @@ handlers.connection = async (io, socket) => {
       .select('members')
       .populate({
         path: 'members',
-        select: 'username profile_pic_url',
+        select: 'username profile_pic',
       });
 
     socket.join(privateId.toString());
@@ -37,7 +37,7 @@ handlers.connection = async (io, socket) => {
   socket.to([...socket.rooms]).emit('userGoOnline', {
     user_id: socket.user._id,
     username: socket.user.username,
-    profile_pic: socket.user.profile_pic_url,
+    profile_pic: socket.user.profile_pic,
   });
 
   // notify the user about friend requests

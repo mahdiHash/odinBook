@@ -16,7 +16,7 @@ const controller = [
       return next(new BadRequestErr('No image uploaded'));
     }
 
-    let room = await Room.findById(req.query.roomId).select('profile_pic_url').catch(next);
+    let room = await Room.findById(req.query.roomId).select('profile_pic').catch(next);
 
     if (!room) {
       fsPromise.rm(req.file.path);
@@ -44,11 +44,11 @@ const controller = [
 
     await uploadImgToCloud(req.file.path, req.file.filename)
       .then(async () => {
-        if (room.profile_pic_url) {
-          await delImgFromCloud(room.profile_pic_url);
+        if (room.profile_pic) {
+          await delImgFromCloud(room.profile_pic);
         }
         
-        room.profile_pic_url = req.file.filename;
+        room.profile_pic = req.file.filename;
         room.save();
         res.json(req.file.filename);
       })

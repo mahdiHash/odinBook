@@ -34,11 +34,11 @@ const controller = [
     
     await uploadImgToCloud(req.file.path, req.file.filename)
     .then(async () => {
-        if (user.profile_pic_url) {
-          await deleteImgFromCloud(user.profile_pic_url).catch(next);
+        if (user.profile_pic) {
+          await deleteImgFromCloud(user.profile_pic).catch(next);
         }
 
-        user.profile_pic_url = req.file.filename;
+        user.profile_pic = req.file.filename;
         user.save();
         res.json(req.file.filename);
       })

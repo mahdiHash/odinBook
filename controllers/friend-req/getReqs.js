@@ -5,7 +5,7 @@ const controller = async (req, res, next) => {
   let requests = await Friend_req.find({ to: req.user._id })
     .skip((page - 1) * 10)
     .limit(10)
-    .populate('from', 'username profile_pic_url')
+    .populate('from', 'username profile_pic')
     .catch(next);
   
   res.json(requests);

@@ -1,7 +1,7 @@
 const Room = require('../../../models/rooms');
 
 const roomProfilePicChanged = async (socket, newImgName, roomId) => {
-  let room = await Room.findById(roomId).select('members profile_pic_url creator');
+  let room = await Room.findById(roomId).select('members profile_pic creator');
 
   if (!room.members.includes(socket.user._id)) {
     return socket.emit('Forbidden', roomId);
@@ -11,7 +11,7 @@ const roomProfilePicChanged = async (socket, newImgName, roomId) => {
     return socket.emit('Forbidden', roomId);
   }
 
-  if (room.profile_pic_url === newImgName) {
+  if (room.profile_pic === newImgName) {
     return socket.emit('BadRequest', newImgName);
   }
 

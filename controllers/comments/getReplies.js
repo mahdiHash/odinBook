@@ -6,7 +6,7 @@ const controller = async (req, res, next) => {
     .select('replies')
     .populate({
       path: 'replies',
-      populate: { path: 'author', select: 'username profile_pic_url' }
+      populate: { path: 'author', select: 'username profile_pic' }
     })
     .catch(next);
 

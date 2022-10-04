@@ -7,7 +7,7 @@ const createRoom = async (socket, roomInfo) => {
     creator: socket.user._id,
     messages: [],
     name: roomInfo.name,
-    profile_pic_url: roomInfo.profile_pic ?? null,
+    profile_pic: roomInfo.profile_pic ?? null,
   });
   await room.save();
 

@@ -8,11 +8,12 @@ const usernameChanged = async (socket, newUsername) => {
 
   let user = await User.findById(socket.user._id).select('username');
 
-  // the image name is not correct
+  // the username is not correct
   if (user.username !== newUsername) {
     return socket.emit('BadRequest', newUsername);
   }
 
+  socket.user.username = newUsername;
   socket.to([...socket.rooms]).emit('usernameChanged', socket.user._id, newUsername);
 }
 

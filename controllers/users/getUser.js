@@ -10,15 +10,15 @@ const controller = async (req, res, next) => {
         select: 'members',
         populate: {
           path: 'members',
-          select: 'username profile_pic_url',
+          select: 'username profile_pic',
         },
       })
       .populate({
         path: 'rooms',
-        select: 'members profile_pic_url',
+        select: 'members profile_pic',
         populate: {
           path: 'members',
-          select: 'username profile_pic_url',
+          select: 'username profile_pic',
         },
       })
       .catch(next);

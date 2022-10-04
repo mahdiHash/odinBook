@@ -9,9 +9,9 @@ const controller = async (req, res, next) => {
     return next(new ForbiddenErr());
   }
 
-  if (req.query.name === req.user.profile_pic_url) {
-    let user = await User.findById(req.user._id).select('profile_pic_url').catch(next);
-    user.profile_pic_url = null;
+  if (req.query.name === req.user.profile_pic) {
+    let user = await User.findById(req.user._id).select('profile_pic').catch(next);
+    user.profile_pic = null;
     user.save();
   }
 

@@ -13,7 +13,7 @@ const controller = async (req, res, next) => {
       limit: 10,
       populate: {
         path: 'author',
-        select: 'username profile_pic_url',
+        select: 'username profile_pic',
       }
     })
     .catch(next);

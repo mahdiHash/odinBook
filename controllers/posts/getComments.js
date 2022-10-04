@@ -7,7 +7,7 @@ const controller = async (req, res, next) => {
     .populate({
       path: 'comments',
       match: { in_reply_to: null }, // don't get replies
-      populate: { path: 'author', select: 'username profile_pic_url' }
+      populate: { path: 'author', select: 'username profile_pic' }
     })
     .catch(next);
 

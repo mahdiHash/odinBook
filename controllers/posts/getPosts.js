@@ -7,7 +7,7 @@ const controller = async (req, res, next) => {
   .sort('date')
   .skip((page - 1) * 10)
   .limit(10)
-  .populate('author', 'username profile_pic_url')
+  .populate('author', 'username profile_pic')
   .catch(next);
 
   res.json(posts);

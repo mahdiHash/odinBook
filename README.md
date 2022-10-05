@@ -13,7 +13,7 @@ The technologies I used:
 - [Socket.IO](https://socket.io/) for bi-directional connection with client,
 - [Passport.js](http://www.passportjs.org/) for authentication (using [local](https://www.passportjs.org/packages/passport-local/), [JWT](http://www.passportjs.org/packages/passport-jwt/) and [Google](https://www.passportjs.org/concepts/authentication/google/) strategies).
 
-To know how to use it and read about features, please visit [this file](https://github.com/mahdiHash/odin-book/blob/master/how-to-use.md).
+To know how to use it and read about features, please visit [this file](https://github.com/mahdiHash/odinbook/blob/master/how-to-use.md).
 
 ## How to run
 

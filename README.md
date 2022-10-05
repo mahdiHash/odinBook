@@ -28,13 +28,13 @@ Third, you need an [AWS S3](https://aws.amazon.com/s3/) storage. I myself used [
 For the last part, you need to clone this repo. Go to any directory you want in your computer. Then, open the terminal and write the command below (I assume you already have Git installed):
 
 ```
-git clone https://github.com/mahdiHash/odin-book.git
+git clone https://github.com/mahdiHash/odinBook.git
 ```  
 
 After that:  
 
 ```
-cd odin-book
+cd odinBook
 ```
 
 Now you need to create a `.env` file in the root directory. This file is needed so the app can read the database URI, online storage service required information, session and JWT secret key from environment variables. Here's the list of variables you need to create:

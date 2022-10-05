@@ -5,6 +5,7 @@ const cors = require('cors');
 const passport = require('passport');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
+const { NotFoundErr } = require('./utils/errors/errors');
 
 // import routers
 const accountsRouter = require('./routes/accounts');
@@ -64,6 +65,11 @@ app.use('/friendreq', friendReqRouter);
 app.use('/comments', commentsRouter);
 app.use('/like', likeRouter);
 app.use('/img', imageRouter);
+
+app.use((req, res, next) => {
+  let error = new NotFoundErr('The page you\'re looking for doesn\'t exist');
+  next(error);
+});
 
 // error handler
 app.use(require('./utils/errors/errLogger'));

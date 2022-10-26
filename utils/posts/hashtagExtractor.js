@@ -1,4 +1,4 @@
-function extractor(text = '') {
+function extractor(text = '', lowerCase = true) {
   let index = 0;
   let tags = [];
 
@@ -14,6 +14,10 @@ function extractor(text = '') {
         tag += text[i];
       }
       else break;
+    }
+
+    if (lowerCase) {
+      tag = tag.toLowerCase();
     }
 
     tags.push(tag);

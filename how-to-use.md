@@ -141,7 +141,7 @@ Here's a list of events that client can emit.
 
 | Event | Purpose | Parameters | Response event emitted by sever | Possible error events |
 | ----- | ------- | --------- | ------------------------------- | --------------------- |
-| `sendFriendReq` | When the user sends a friend request to another user, after getting the HTTP response from server, you need to emit this event so the target user could be notified about the request if he/she is online. | `targetUser <String>`: the target user's `_id` | `friendReqreceived` | - |
+| `sendFriendReq` | When the user sends a friend request to another user, after getting the HTTP response from server, you need to emit this event so the target user could be notified about the request if he/she is online. | `targetUser <String>`: the target user's `_id` | `friendReqReceived` | - |
 | `acceptFriendReq` | When the target user accepts the friend request, you need to emit this event so the sender of the request could be notified if he/she is online. | `reqId <String>`: the friend request's `_id` | `friendReqAccepted` | `Forbidden` |
 | `createRoom` | You can emit this event to create a new room. | `roomInfo <Object>`: an object containing `name` and `profile_pic` prorperties. After creating the room in database, the socket will be joined to the room. | `roomCreated` | - |
 | `deleteRoom` | To delete a room which was created by the current user, you need to emit this event. | `roomId <String>`: the `_id` of target room | `roomDeleted` (to all of members) | `NotFound`, `Forbidden` |
@@ -164,7 +164,7 @@ Here's a list of the event you should expect from the server on the client-side:
 
 | Event | Purpose | Arguments | Event that caused this |
 | ----- | ------- | --------- | ---------------------- |
-| `friendReqreceived` | If the user is online, you can use this to show a notification to the user. | Sender's info: `{ _id, username, profile_pic}` | `sendFriendReq` |
+| `friendReqReceived` | If the user is online, you can use this to show a notification to the user. | Sender's info: `{ _id, username, profile_pic}` | `sendFriendReq` |
 | `friendReqAccepted` | If the user is online, you can use this event to show a notification to him/her. | receiver's info: `{ _id, username, profile_pic}` | `acceptFriendReq` |
 | `roomCreated` | Can be used to create the room immediately after creation. | `room Object: {_id, members[_id], creator: _id, messages, name, profile_pic}` | `createRoom` |
 | `roomDeleted` | When this is emitted, the room is no longer available, so you may delete it for the user too or not let any message be sent. | `roomId: _id` | `deleteRoom` |
